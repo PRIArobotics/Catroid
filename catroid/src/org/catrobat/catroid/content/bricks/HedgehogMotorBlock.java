@@ -168,8 +168,9 @@ public class HedgehogMotorBlock extends FormulaBrick {
 
     @Override
     public List<SequenceAction> addActionToSequence(Sprite sprite, SequenceAction sequence) {
-        sequence.addAction(sprite.getActionFactory().createShowTextAction(sprite, new Formula(0),
-                getFormulaWithBrickField(BrickField.HEDGEHOG_MOTOR_POWER), "x"));
+        sequence.addAction(sprite.getActionFactory().createHedgehogMotorPowerAction(sprite,
+                getFormulaWithBrickField(BrickField.HEDGEHOG_MOTOR_PORT),
+                getFormulaWithBrickField(BrickField.HEDGEHOG_MOTOR_POWER)));
         return null;
     }
 
