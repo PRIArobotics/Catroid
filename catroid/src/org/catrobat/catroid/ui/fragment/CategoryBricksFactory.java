@@ -65,6 +65,7 @@ import org.catrobat.catroid.content.bricks.FlashBrick;
 import org.catrobat.catroid.content.bricks.ForeverBrick;
 import org.catrobat.catroid.content.bricks.GlideToBrick;
 import org.catrobat.catroid.content.bricks.GoNStepsBackBrick;
+import org.catrobat.catroid.content.bricks.HedgehogMotorBlock;
 import org.catrobat.catroid.content.bricks.HideBrick;
 import org.catrobat.catroid.content.bricks.HideTextBrick;
 import org.catrobat.catroid.content.bricks.IfLogicBeginBrick;
@@ -171,6 +172,8 @@ public class CategoryBricksFactory {
 			tempList = setupPhiroProCategoryList();
 		} else if (category.equals(context.getString(R.string.category_raspi))) {
 			tempList = setupRaspiCategoryList();
+		} else if (category.equals(context.getString(R.string.category_hedgehog))) {
+			tempList = setupHedgehogCategoryList();
 		}
 
 		for (Brick brick : tempList) {
@@ -445,6 +448,13 @@ public class CategoryBricksFactory {
 		raspiBrickList.add(new RaspiIfLogicBeginBrick(BrickValues.RASPI_DIGITAL_INITIAL_PIN_NUMBER));
 
 		return raspiBrickList;
+	}
+
+	private List<Brick> setupHedgehogCategoryList() {
+		List<Brick> hedgehogBrickList = new ArrayList<Brick>();
+		hedgehogBrickList.add(new HedgehogMotorBlock(BrickValues.HEDGEHOG_MOTOR_INITIAL_PORT, BrickValues.HEDGEHOG_MOTOR_INITIAL_POWER));
+
+		return hedgehogBrickList;
 	}
 
 	private boolean isBackground(Sprite sprite) {

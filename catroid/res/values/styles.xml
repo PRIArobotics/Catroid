@@ -408,6 +408,23 @@
         <item name="android:background">@drawable/brick_cyan_3h</item>
     </style>
 
+    <style name="BrickContainer.Hedgehog"></style>
+
+    <style name="BrickContainer.Hedgehog.Small">
+        <item name="android:minHeight">@dimen/brick_height_small</item>
+        <item name="android:background">@drawable/brick_green_1h</item>
+    </style>
+
+    <style name="BrickContainer.Hedgehog.Medium">
+        <item name="android:minHeight">@dimen/brick_height_medium</item>
+        <item name="android:background">@drawable/brick_green_2h</item>
+    </style>
+
+    <style name="BrickContainer.Hedgehog.Big">
+        <item name="android:minHeight">@dimen/brick_height_big</item>
+        <item name="android:background">@drawable/brick_green_3h</item>
+    </style>
+
     <style name="BrickContainer.Lego" ></style >
 
     <style name="BrickContainer.Lego.Small" >
@@ -604,6 +621,11 @@
     <style name="BrickCategoryText.Raspi">
         <item name="android:background">@drawable/brick_selection_background_bluetooth</item>
         <item name="android:drawableRight">@drawable/main_menu_button_arrow_bluetooth</item>
+    </style>
+
+    <style name="BrickCategoryText.Hedgehog">
+        <item name="android:background">@drawable/brick_selection_background_user_bricks</item>
+        <item name="android:drawableRight">@drawable/main_menu_button_arrow_user_bricks</item>
     </style>
     
     <style name="userBrickDataTextBackground" >

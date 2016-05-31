@@ -155,6 +155,33 @@
 
     </PreferenceScreen>
 
+
+    <PreferenceScreen
+        android:key="settings_hedgehog_screen"
+        android:summary="@string/preference_description_hedgehog_bricks"
+        android:title="@string/preference_title_enable_hedgehog_bricks" >
+
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="setting_hedgehog_bricks"
+            android:summary="@string/preference_hedgehog_enable_bricks"
+            android:title="@string/preference_title_enable_hedgehog_bricks" />
+
+        <PreferenceCategory
+            android:title="@string/hedgehog_settings_title_name"
+            android:key="setting_hedgehog_connection_settings_category">
+            <EditTextPreference android:key="setting_hedgehog_host_preference"
+                android:title="@string/preference_hedgehog_host"
+                android:defaultValue="192.168.0.1" />
+
+            <EditTextPreference android:key="setting_hedgehog_port_preference"
+                android:title="@string/preference_hedgehog_port"
+                android:inputType="number"
+                android:defaultValue="10000" />
+        </PreferenceCategory>
+
+    </PreferenceScreen>
+
     <CheckBoxPreference
         android:defaultValue="false"
         android:key="setting_enable_phiro_bricks"

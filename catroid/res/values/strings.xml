@@ -120,6 +120,12 @@
     <string name="preference_raspi_host">Raspberry Pi IP-/Host-Address</string>
     <string name="preference_raspi_port">Raspberry Pi Port</string>
     <!--  -->
+    <string name="preference_title_enable_hedgehog_bricks">Hedgehog bricks</string>
+    <string name="preference_description_hedgehog_bricks">Allow to control Hedgehog robots</string>
+    <string name="preference_hedgehog_enable_bricks">Enable Hedgehog bricks</string>
+    <string name="preference_hedgehog_host">Hedgehog IP-/Host-Address</string>
+    <string name="preference_hedgehog_port">Hedgehog Port</string>
+    <!--  -->
 
 
     <!-- New Object Dialog -->
@@ -482,6 +488,7 @@
     <string name="category_phiro">Phiro</string>
     <string name="category_arduino">Arduino</string>
     <string name="category_raspi">Raspberry Pi</string>
+    <string name="category_hedgehog">Hedgehog</string>
     <!--  -->
 
     <!-- Motion bricks -->
@@ -789,6 +796,15 @@
     <!-- Raspi Settings -->
     <string name="raspi_settings_title_name">Raspberry Pi Settings</string>
     <string name="raspi_settings_gpio_version">GPIO Version</string>
+    <!--  -->
+
+    <!-- Hedgehog Bricks -->
+    <string name="brick_hedgehog_set_motor">Set Hedgehog motor</string>
+    <string name="brick_hedgehog_to_power">to power</string>
+    <!--  -->
+
+    <!-- Hedgehog Settings -->
+    <string name="hedgehog_settings_title_name">Hedgehog Settings</string>
     <!--  -->
 
     <!-- Lego Mindstorms Strings -->

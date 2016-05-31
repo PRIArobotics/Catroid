@@ -48,6 +48,7 @@ public class SettingsActivity extends PreferenceActivity {
 	private static final String SETTINGS_SHOW_PHIRO_BRICKS = "setting_enable_phiro_bricks";
 	public static final String SETTINGS_SHOW_ARDUINO_BRICKS = "setting_arduino_bricks";
 	public static final String SETTINGS_SHOW_RASPI_BRICKS = "setting_raspi_bricks";
+	public static final String SETTINGS_SHOW_HEDGEHOG_BRICKS = "setting_hedgehog_bricks";
 	public static final String SETTINGS_SHOW_NFC_BRICKS = "setting_nfc_bricks";
 	public static final String SETTINGS_PARROT_AR_DRONE_CATROBAT_TERMS_OF_SERVICE_ACCEPTED_PERMANENTLY = "setting_parrot_ar_drone_catrobat_terms_of_service_accepted_permanently";
 	PreferenceScreen screen = null;
@@ -68,6 +69,8 @@ public class SettingsActivity extends PreferenceActivity {
 	public static final String RASPI_HOST = "setting_raspi_host_preference";
 	public static final String RASPI_PORT = "setting_raspi_port_preference";
 	public static final String RASPI_VERSION_SPINNER = "setting_raspi_version_preference";
+
+	public static final String HEDGEHOG_SETTINGS_SCREEN = "settings_hedgehog_screen";
 
 	@SuppressWarnings("deprecation")
 	@Override
@@ -113,6 +116,12 @@ public class SettingsActivity extends PreferenceActivity {
 			screen.removePreference(raspiPreference);
 		} else {
 			setUpRaspiPreferences();
+		}
+
+		if (!BuildConfig.FEATURE_HEDGEHOG_ENABLED) {
+			PreferenceScreen hedgehogPreference = (PreferenceScreen) findPreference(HEDGEHOG_SETTINGS_SCREEN);
+			hedgehogPreference.setEnabled(false);
+			screen.removePreference(hedgehogPreference);
 		}
 
 		if (!BuildConfig.FEATURE_NFC_ENABLED) {
@@ -309,6 +318,10 @@ public class SettingsActivity extends PreferenceActivity {
 
 	public static boolean isRaspiSharedPreferenceEnabled(Context context) {
 		return getBooleanSharedPreference(false, SETTINGS_SHOW_RASPI_BRICKS, context);
+	}
+
+	public static boolean isHedgehogSharedPreferenceEnabled(Context context) {
+		return getBooleanSharedPreference(false, SETTINGS_SHOW_HEDGEHOG_BRICKS, context);
 	}
 
 	private static void setBooleanSharedPreference(boolean value, String settingsString, Context context) {

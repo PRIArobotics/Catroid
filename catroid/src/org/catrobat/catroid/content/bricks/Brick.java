@@ -60,7 +60,10 @@ public interface Brick extends Serializable, Cloneable {
 
 		ARDUINO_ANALOG_PIN_VALUE, ARDUINO_ANALOG_PIN_NUMBER, ARDUINO_DIGITAL_PIN_VALUE, ARDUINO_DIGITAL_PIN_NUMBER,
 
-		RASPI_DIGITAL_PIN_VALUE, RASPI_DIGITAL_PIN_NUMBER, RASPI_PWM_PERCENTAGE, RASPI_PWM_FREQUENCY
+		RASPI_DIGITAL_PIN_VALUE, RASPI_DIGITAL_PIN_NUMBER, RASPI_PWM_PERCENTAGE, RASPI_PWM_FREQUENCY,
+
+		HEDGEHOG_MOTOR_PORT, HEDGEHOG_SERVO_PORT, HEDGEHOG_SENSOR_PORT,
+		HEDGEHOG_MOTOR_POWER, HEDGEHOG_SERVO_POSITION,
 	}
 
 	//use bitwise | for using multiple resources in a brick
@@ -84,6 +87,7 @@ public interface Brick extends Serializable, Cloneable {
 	int NFC_ADAPTER = 0x10000;
 	int VIDEO = 0x20000;
 	//	public static final int BLUETOOTH_ARDUINO = 0x20000;
+	int HEDGEHOG = 0x40000;
 
 	List<SequenceAction> addActionToSequence(Sprite sprite, SequenceAction sequence);
 
