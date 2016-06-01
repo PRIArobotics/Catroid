@@ -31,13 +31,10 @@ import org.catrobat.catroid.ProjectManager;
 import org.catrobat.catroid.content.bricks.Brick;
 import org.catrobat.catroid.ui.SettingsActivity;
 import org.zeromq.ZMQ;
-import org.zeromq.ZMQ.*;
 
 import java.util.concurrent.TimeUnit;
 
-import at.pria.hedgehog.protocol.proto.HedgehogP.HedgehogMessage;
-import at.pria.hedgehog.protocol.proto.AckP.Acknowledgement;
-import static at.pria.hedgehog.protocol.proto.AckP.OK;
+import at.pria.hedgehog.client.HedgehogClient;
 
 public final class HedgehogClientWrapper {
 	private static final String TAG = HedgehogClientWrapper.class.getSimpleName();
@@ -63,46 +60,33 @@ public final class HedgehogClientWrapper {
 		return SettingsActivity.isHedgehogSharedPreferenceEnabled(CatroidApplication.getAppContext());
 	}
 
+	private HedgehogClient client;
+
 	private HedgehogClientWrapper() {
 		connect();
 	}
 
+	public HedgehogClient getClient() {
+		return client;
+	}
+
 	private void connect() {
 		try {
-			new AsyncConnectTask().execute().get(2000, TimeUnit.MILLISECONDS);
+			client = new AsyncConnectTask("tcp://192.168.43.86:42907").execute().get(2000, TimeUnit.MILLISECONDS);
 		} catch (Exception e) {
 			Log.e(TAG, "Hedgehog connection faliled");
 		}
 	}
 
-	private class AsyncConnectTask extends AsyncTask<Void, Void, Void> {
-		protected Void doInBackground(Void... args) {
-			{
-				HedgehogMessage msg = new HedgehogMessage();
-				{
-					Acknowledgement ack = new Acknowledgement();
-					ack.code = OK;
-					msg.setAcknowledgement(ack);
-					if(msg.getAcknowledgement().code != OK)
-						Log.d(TAG, "protobuf OK");
-				}
-			}
-			{
-				Context ctx = ZMQ.context(1);
+	private class AsyncConnectTask extends AsyncTask<Void, Void, HedgehogClient> {
+		private String endpoint;
 
-				Socket socket1 = ctx.socket(ZMQ.PAIR);
-				socket1.bind("inproc://endpoint");
+		public AsyncConnectTask(String endpoint) {
+			this.endpoint = endpoint;
+		}
 
-				Socket socket2 = ctx.socket(ZMQ.PAIR);
-				socket2.connect("inproc://endpoint");
-
-				socket1.send("ab");
-				if(!socket2.recvStr().equals("ab"))
-					Log.d(TAG, "jeroMQ ok");
-			}
-			Log.d(TAG, "initialized");
-
-			return null;
+		protected HedgehogClient doInBackground(Void... args) {
+			return new HedgehogClient(endpoint, ZMQ.context(1));
 		}
 	}
 }
