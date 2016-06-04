@@ -41,12 +41,12 @@ import org.catrobat.catroid.ui.fragment.FormulaEditorFragment;
 
 import java.util.List;
 
-public class HedgehogMotorBlock extends FormulaBrick {
+public class HedgehogMotorBrick extends FormulaBrick {
 
     private static final long serialVersionUID = 1L;
     private transient View prototypeView;
 
-    public HedgehogMotorBlock(int port, int power) {
+    public HedgehogMotorBrick(int port, int power) {
         initializeBrickFields(new Formula(port), new Formula(power));
     }
 
