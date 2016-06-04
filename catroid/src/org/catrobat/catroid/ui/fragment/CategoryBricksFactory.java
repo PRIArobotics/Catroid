@@ -66,6 +66,7 @@ import org.catrobat.catroid.content.bricks.ForeverBrick;
 import org.catrobat.catroid.content.bricks.GlideToBrick;
 import org.catrobat.catroid.content.bricks.GoNStepsBackBrick;
 import org.catrobat.catroid.content.bricks.HedgehogMotorBrick;
+import org.catrobat.catroid.content.bricks.HedgehogServoPositionBrick;
 import org.catrobat.catroid.content.bricks.HideBrick;
 import org.catrobat.catroid.content.bricks.HideTextBrick;
 import org.catrobat.catroid.content.bricks.IfLogicBeginBrick;
@@ -452,7 +453,10 @@ public class CategoryBricksFactory {
 
 	private List<Brick> setupHedgehogCategoryList() {
 		List<Brick> hedgehogBrickList = new ArrayList<Brick>();
-		hedgehogBrickList.add(new HedgehogMotorBrick(BrickValues.HEDGEHOG_MOTOR_INITIAL_PORT, BrickValues.HEDGEHOG_MOTOR_INITIAL_POWER));
+		hedgehogBrickList.add(new HedgehogMotorBrick(BrickValues.HEDGEHOG_MOTOR_INITIAL_PORT, BrickValues
+				.HEDGEHOG_MOTOR_INITIAL_POWER));
+		hedgehogBrickList.add(new HedgehogServoPositionBrick(BrickValues.HEDGEHOG_SERVO_INITIAL_PORT, BrickValues
+				.HEDGEHOG_SERVO_INITIAL_POSITION));
 
 		return hedgehogBrickList;
 	}

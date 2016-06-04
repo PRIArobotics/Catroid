@@ -801,6 +801,8 @@
     <!-- Hedgehog Bricks -->
     <string name="brick_hedgehog_set_motor">Set Hedgehog motor</string>
     <string name="brick_hedgehog_to_power">to power</string>
+    <string name="brick_hedgehog_set_servo">Set Hedgehog servo</string>
+    <string name="brick_hedgehog_position_to">position to</string>
     <!--  -->
 
     <!-- Hedgehog Settings -->

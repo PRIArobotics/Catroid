@@ -141,6 +141,8 @@ public final class BrickValues {
 	//Constants Hedgehog
 	public static final int HEDGEHOG_MOTOR_INITIAL_PORT = 3;
 	public static final int HEDGEHOG_MOTOR_INITIAL_POWER = 50;
+	public static final int HEDGEHOG_SERVO_INITIAL_PORT = 3;
+	public static final int HEDGEHOG_SERVO_INITIAL_POSITION = 500;
 
 	// Suppress default constructor for noninstantiability
 	private BrickValues() {

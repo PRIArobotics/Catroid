@@ -67,6 +67,7 @@ import org.catrobat.catroid.content.actions.DroneTurnRightWithMagnetometerAction
 import org.catrobat.catroid.content.actions.FlashAction;
 import org.catrobat.catroid.content.actions.GoNStepsBackAction;
 import org.catrobat.catroid.content.actions.HedgehogMotorPowerAction;
+import org.catrobat.catroid.content.actions.HedgehogServoPositionAction;
 import org.catrobat.catroid.content.actions.HideAction;
 import org.catrobat.catroid.content.actions.HideTextAction;
 import org.catrobat.catroid.content.actions.IfLogicAction;
@@ -813,6 +814,14 @@ public class ActionFactory extends Actions {
 		action.setSprite(sprite);
 		action.setPortFormula(port);
 		action.setPowerFormula(power);
+		return action;
+	}
+
+	public Action createHedgehogServoPositionAction(Sprite sprite, Formula port, Formula position) {
+		HedgehogServoPositionAction action = action(HedgehogServoPositionAction.class);
+		action.setSprite(sprite);
+		action.setPortFormula(port);
+		action.setPositionFormula(position);
 		return action;
 	}
 }
