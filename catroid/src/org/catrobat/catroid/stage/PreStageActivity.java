@@ -51,7 +51,7 @@ import org.catrobat.catroid.drone.DroneInitializer;
 import org.catrobat.catroid.drone.DroneServiceWrapper;
 import org.catrobat.catroid.facedetection.FaceDetectionHandler;
 import org.catrobat.catroid.formulaeditor.SensorHandler;
-import org.catrobat.catroid.devices.hedgehog.HedgehogClientWrapper;
+import org.catrobat.catroid.devices.hedgehog.HedgehogService;
 import org.catrobat.catroid.ui.BaseActivity;
 import org.catrobat.catroid.ui.SettingsActivity;
 import org.catrobat.catroid.ui.dialogs.CustomAlertDialogBuilder;
@@ -217,8 +217,16 @@ public class PreStageActivity extends BaseActivity {
 		}
 
 		if ((requiredResources & Brick.HEDGEHOG) > 0) {
-			HedgehogClientWrapper.getInstance();
-			resourceInitialized();
+			String host = SettingsActivity.getHedgehogHost(this.getBaseContext());
+			int port = SettingsActivity.getHedgehogPort(this.getBaseContext());
+			String endpoint = "tcp://" + host + ":" + port;
+
+			if(HedgehogService.getInstance().connect(endpoint)) {
+				resourceInitialized();
+			} else {
+				ToastUtil.showError(this, "Error: connecting to " + endpoint + " failed");
+				resourceFailed();
+			}
 		}
 
 		if (requiredResourceCounter == Brick.NO_RESOURCES) {

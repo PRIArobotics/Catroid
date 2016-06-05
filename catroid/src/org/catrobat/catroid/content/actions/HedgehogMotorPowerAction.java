@@ -28,7 +28,7 @@ import android.util.Log;
 import com.badlogic.gdx.scenes.scene2d.actions.TemporalAction;
 
 import org.catrobat.catroid.content.Sprite;
-import org.catrobat.catroid.devices.hedgehog.HedgehogClientWrapper;
+import org.catrobat.catroid.devices.hedgehog.HedgehogService;
 import org.catrobat.catroid.formulaeditor.Formula;
 import org.catrobat.catroid.formulaeditor.InterpretationException;
 
@@ -69,7 +69,7 @@ public class HedgehogMotorPowerAction extends TemporalAction {
 	@Override
 	protected void update(float percent) {
 		Log.d(TAG, "Hedgehog motor port=" + portInterpretation + ", power=" + powerInterpretation);
-		HedgehogClientWrapper.getInstance().getClient().move(portInterpretation, powerInterpretation, POWER);
+		HedgehogService.getInstance().getClient().move(portInterpretation, powerInterpretation, POWER);
 	}
 
 	public void setSprite(Sprite sprite) {

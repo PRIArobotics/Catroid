@@ -71,6 +71,8 @@ public class SettingsActivity extends PreferenceActivity {
 	public static final String RASPI_VERSION_SPINNER = "setting_raspi_version_preference";
 
 	public static final String HEDGEHOG_SETTINGS_SCREEN = "settings_hedgehog_screen";
+	public static final String HEDGEHOG_HOST = "setting_hedgehog_host_preference";
+	public static final String HEDGEHOG_PORT = "setting_hedgehog_port_preference";
 
 	@SuppressWarnings("deprecation")
 	@Override
@@ -442,5 +444,13 @@ public class SettingsActivity extends PreferenceActivity {
 
 	public static void resetSharedPreferences(Context context) {
 		getSharedPreferences(context).edit().clear().commit();
+	}
+
+	public static String getHedgehogHost(Context context) {
+		return getSharedPreferences(context).getString(HEDGEHOG_HOST, null);
+	}
+
+	public static int getHedgehogPort(Context context) {
+		return Integer.parseInt(getSharedPreferences(context).getString(HEDGEHOG_PORT, null));
 	}
 }

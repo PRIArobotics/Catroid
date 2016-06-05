@@ -28,7 +28,7 @@ import android.util.Log;
 import com.badlogic.gdx.scenes.scene2d.actions.TemporalAction;
 
 import org.catrobat.catroid.content.Sprite;
-import org.catrobat.catroid.devices.hedgehog.HedgehogClientWrapper;
+import org.catrobat.catroid.devices.hedgehog.HedgehogService;
 import org.catrobat.catroid.formulaeditor.Formula;
 import org.catrobat.catroid.formulaeditor.InterpretationException;
 
@@ -67,7 +67,7 @@ public class HedgehogServoPositionAction extends TemporalAction {
 	@Override
 	protected void update(float percent) {
 		Log.d(TAG, "Hedgehog servo port=" + portInterpretation + ", position=" + positionInterpretation);
-		HedgehogClientWrapper.getInstance().getClient().setServo(portInterpretation, true, positionInterpretation);
+		HedgehogService.getInstance().getClient().setServo(portInterpretation, true, positionInterpretation);
 	}
 
 	public void setSprite(Sprite sprite) {

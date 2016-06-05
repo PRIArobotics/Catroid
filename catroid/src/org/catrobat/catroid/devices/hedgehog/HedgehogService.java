@@ -36,14 +36,14 @@ import java.util.concurrent.TimeUnit;
 
 import at.pria.hedgehog.client.HedgehogClient;
 
-public final class HedgehogClientWrapper {
-	private static final String TAG = HedgehogClientWrapper.class.getSimpleName();
+public final class HedgehogService {
+	private static final String TAG = HedgehogService.class.getSimpleName();
 
-	private static HedgehogClientWrapper instance = null;
+	private static HedgehogService instance = null;
 
-	public static HedgehogClientWrapper getInstance() {
+	public static HedgehogService getInstance() {
 		if (instance == null) {
-			instance = new HedgehogClientWrapper();
+			instance = new HedgehogService();
 		}
 
 		return instance;
@@ -62,19 +62,19 @@ public final class HedgehogClientWrapper {
 
 	private HedgehogClient client;
 
-	private HedgehogClientWrapper() {
-		connect();
-	}
+	private HedgehogService() {}
 
 	public HedgehogClient getClient() {
 		return client;
 	}
 
-	private void connect() {
+	public boolean connect(String endpoint) {
 		try {
-			client = new AsyncConnectTask("tcp://192.168.43.86:42907").execute().get(2000, TimeUnit.MILLISECONDS);
+			client = new AsyncConnectTask(endpoint).execute().get(2000, TimeUnit.MILLISECONDS);
+			return true;
 		} catch (Exception e) {
-			Log.e(TAG, "Hedgehog connection faliled");
+			Log.e(TAG, "Hedgehog connection failed");
+			return false;
 		}
 	}
 
