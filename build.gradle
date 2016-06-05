@@ -24,18 +24,20 @@
 buildscript {
     repositories {
         mavenCentral()
+        mavenLocal()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:1.5.0'
-        classpath 'com.jakewharton.sdkmanager:gradle-plugin:0.12.0'
+        classpath 'com.android.tools.build:gradle:2.1.0'
+//        classpath 'com.jakewharton.sdkmanager:gradle-plugin:0.12.0'
     }
 }
 
 repositories {
     mavenCentral()
+    mavenLocal()
 }
 
-apply plugin: 'android-sdk-manager'
+//apply plugin: 'android-sdk-manager'
 apply plugin: 'com.android.application'
 apply plugin: 'checkstyle'
 apply plugin: 'pmd'
@@ -105,6 +107,7 @@ dependencies {
     compile 'com.android.support:multidex:1.0.1'
     compile fileTree(include: '*.jar', dir: 'catroid/libs')
     compile fileTree(include: '*.jar', dir: 'catroid/libs-natives')
+    compile 'at.pria.hedgehog:HedgehogJavaClient:0.0.0-SNAPSHOT'
     androidTestCompile fileTree(include: '*.jar', dir: 'catroidTest/libs')
     androidTestCompile 'com.jayway.android.robotium:robotium-solo:5.2.1'
     androidTestCompile 'com.google.dexmaker:dexmaker-mockito:1.2'
