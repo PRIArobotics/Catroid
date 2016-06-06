@@ -803,6 +803,7 @@
     <string name="brick_hedgehog_to_power">to power</string>
     <string name="brick_hedgehog_set_servo">Set Hedgehog servo</string>
     <string name="brick_hedgehog_position_to">position to</string>
+    <string name="brick_hedgehog_to_off">to off</string>
     <!--  -->
 
     <!-- Hedgehog Settings -->
