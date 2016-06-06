@@ -71,6 +71,7 @@ public final class HedgehogService {
 	public boolean connect(String endpoint) {
 		try {
 			client = new AsyncConnectTask(endpoint).execute().get(2000, TimeUnit.MILLISECONDS);
+			Log.d(TAG, "Hedgehog connection to " + endpoint + " successful");
 			return true;
 		} catch (Exception e) {
 			Log.e(TAG, "Hedgehog connection failed");
