@@ -87,7 +87,11 @@ public final class HedgehogService {
 		}
 
 		protected HedgehogClient doInBackground(Void... args) {
-			return new HedgehogClient(endpoint, ZMQ.context(1));
+			HedgehogClient client = new HedgehogClient(endpoint, ZMQ.context(1));
+			// ZMQ doesn't block or fail if the server is not online.
+			// Do something blocking so that the AsyncTask runs into its timeout when there's no server
+			client.getAnalog(0);
+			return client;
 		}
 	}
 }

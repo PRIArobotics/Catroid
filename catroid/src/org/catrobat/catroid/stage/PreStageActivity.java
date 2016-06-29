@@ -224,7 +224,7 @@ public class PreStageActivity extends BaseActivity {
 			if(HedgehogService.getInstance().connect(endpoint)) {
 				resourceInitialized();
 			} else {
-				ToastUtil.showError(this, "Error: connecting to " + endpoint + " failed");
+				ToastUtil.showError(this, "Error: connecting to Hedgehog at " + endpoint + " failed");
 				resourceFailed();
 			}
 		}
