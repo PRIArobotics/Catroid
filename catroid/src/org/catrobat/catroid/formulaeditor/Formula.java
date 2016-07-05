@@ -93,11 +93,14 @@ public class Formula implements Serializable {
 	}
 
 	public Formula(String value) {
-		if (value.equalsIgnoreCase(Functions.ARDUINOANALOG.toString())) {
-			formulaTree = new FormulaElement(ElementType.SENSOR, Functions.ARDUINOANALOG.toString(), null);
-		} else if (value.equalsIgnoreCase(Functions.ARDUINODIGITAL.toString())) {
-			formulaTree = new FormulaElement(ElementType.SENSOR, Functions.ARDUINODIGITAL.toString(), null);
-		} else {
+		Functions[] sensors = {Functions.ARDUINOANALOG, Functions.ARDUINODIGITAL, Functions.HEDGEHOG_ANALOG,
+				Functions.HEDGEHOG_DIGITAL};
+		for (Functions sensor : sensors) {
+			if (value.equalsIgnoreCase(sensor.toString())) {
+				formulaTree = new FormulaElement(ElementType.SENSOR, sensor.toString(), null);
+			}
+		}
+		if (formulaTree == null) {
 			formulaTree = new FormulaElement(ElementType.STRING, value, null);
 			internFormula = new InternFormula(formulaTree.getInternTokenList());
 		}

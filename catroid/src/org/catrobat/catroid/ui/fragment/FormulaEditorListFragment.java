@@ -135,6 +135,9 @@ public class FormulaEditorListFragment extends ListFragment implements Dialog.On
 
 	private static final int[] RASPBERRY_SENSOR_ITEMS = { R.string.formula_editor_function_raspi_read_pin_value_digital };
 
+	private static final int[] HEDGEHOG_SENSOR_ITEMS = { R.string.formula_editor_function_hedgehog_get_analog,
+			R.string.formula_editor_function_hedgehog_get_digital };
+
 	private String actionBarTitle;
 	private int[] itemsIds;
 
@@ -225,6 +228,10 @@ public class FormulaEditorListFragment extends ListFragment implements Dialog.On
 
 			if (SettingsActivity.isRaspiSharedPreferenceEnabled(context)) {
 				itemsIds = concatAll(itemsIds, RASPBERRY_SENSOR_ITEMS);
+			}
+
+			if (SettingsActivity.isHedgehogSharedPreferenceEnabled(context)) {
+				itemsIds = concatAll(itemsIds, HEDGEHOG_SENSOR_ITEMS);
 			}
 		}
 

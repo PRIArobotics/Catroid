@@ -31,6 +31,7 @@ import org.catrobat.catroid.common.ServiceProvider;
 import org.catrobat.catroid.content.Sprite;
 import org.catrobat.catroid.content.bricks.Brick;
 import org.catrobat.catroid.devices.arduino.Arduino;
+import org.catrobat.catroid.devices.hedgehog.HedgehogService;
 import org.catrobat.catroid.devices.raspberrypi.RPiSocketConnection;
 import org.catrobat.catroid.devices.raspberrypi.RaspberryPiService;
 
@@ -38,6 +39,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+
+import at.pria.hedgehog.client.HedgehogClient;
 
 public class FormulaElement implements Serializable {
 
@@ -402,6 +405,28 @@ public class FormulaElement implements Serializable {
 					Log.e(getClass().getSimpleName(), "RPi: exception during getPin: " + e);
 				}
 				break;
+			case HEDGEHOG_DIGITAL: {
+				HedgehogClient client = HedgehogService.getInstance().getClient();
+				int port = doubleValueOfLeftChild.intValue();
+				// TODO check if pin is
+				try {
+					return client.getDigital(port) ? 1d : 0d;
+				} catch (Exception e) {
+					Log.e(getClass().getSimpleName(), "Hedgehog: exception during getDigital: " + e);
+				}
+				break;
+			}
+			case HEDGEHOG_ANALOG: {
+				HedgehogClient client = HedgehogService.getInstance().getClient();
+				int port = doubleValueOfLeftChild.intValue();
+				// TODO check if pin is
+				try {
+					return client.getAnalog(port);
+				} catch (Exception e) {
+					Log.e(getClass().getSimpleName(), "Hedgehog: exception during getAnalog: " + e);
+				}
+				break;
+			}
 			case LIST_ITEM:
 				return interpretFunctionListItem(left, sprite);
 			case CONTAINS:
@@ -935,6 +960,10 @@ public class FormulaElement implements Serializable {
 				case ARDUINOANALOG:
 				case ARDUINODIGITAL:
 					resources |= Brick.BLUETOOTH_SENSORS_ARDUINO;
+					break;
+				case HEDGEHOG_ANALOG:
+				case HEDGEHOG_DIGITAL:
+					resources |= Brick.HEDGEHOG;
 					break;
 				case RASPIDIGITAL:
 					resources |= Brick.SOCKET_RASPI;

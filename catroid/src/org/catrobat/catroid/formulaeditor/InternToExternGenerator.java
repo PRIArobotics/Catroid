@@ -91,6 +91,8 @@ public class InternToExternGenerator {
 				R.string.formula_editor_function_arduino_read_pin_value_analog);
 		INTERN_EXTERN_LANGUAGE_CONVERTER_MAP.put(Functions.RASPIDIGITAL.name(), R.string
 				.formula_editor_function_raspi_read_pin_value_digital);
+		INTERN_EXTERN_LANGUAGE_CONVERTER_MAP.put(Functions.HEDGEHOG_DIGITAL.name(), R.string.formula_editor_function_hedgehog_get_digital);
+		INTERN_EXTERN_LANGUAGE_CONVERTER_MAP.put(Functions.HEDGEHOG_ANALOG.name(), R.string.formula_editor_function_hedgehog_get_analog);
 		INTERN_EXTERN_LANGUAGE_CONVERTER_MAP.put(Functions.LIST_ITEM.name(), R.string.formula_editor_function_list_item);
 		INTERN_EXTERN_LANGUAGE_CONVERTER_MAP.put(Functions.CONTAINS.name(), R.string.formula_editor_function_contains);
 		INTERN_EXTERN_LANGUAGE_CONVERTER_MAP.put(Sensors.X_ACCELERATION.name(),

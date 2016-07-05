@@ -144,6 +144,12 @@ public class InternFormulaKeyboardAdapter {
 			case R.string.formula_editor_function_raspi_read_pin_value_digital:
 				return buildSingleParameterFunction(Functions.RASPIDIGITAL, InternTokenType.NUMBER, "0");
 
+			//Hedgehog
+			case R.string.formula_editor_function_hedgehog_get_digital:
+				return buildSingleParameterFunction(Functions.HEDGEHOG_DIGITAL, InternTokenType.NUMBER, "0");
+			case R.string.formula_editor_function_hedgehog_get_analog:
+				return buildSingleParameterFunction(Functions.HEDGEHOG_ANALOG, InternTokenType.NUMBER, "0");
+
 			//SENSOR
 			case R.string.formula_editor_sensor_x_acceleration:
 				return buildSensor(Sensors.X_ACCELERATION);
